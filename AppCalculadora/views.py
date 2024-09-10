@@ -15,4 +15,17 @@ class Suma(APIView):
         # Devuelve la respuesta con el resultado de la suma
         return Response({'resultado': resultado})
     
+class Multiplicacion(APIView):
+    def post(self, request):
+        # Obtenemos la lista de números que llegó en el JSON
+        listaNumeros = request.data.get('listaNumeros')
+
+        producto = 1
+        # Iteramos sobre la lista y multiplicamos cada número al acumulador
+        for numero in listaNumeros:
+            producto *= numero
+
+        # Devuelve la respuesta con el resultado de la multiplicación
+        return Response({'resultado': producto})
+    
 
