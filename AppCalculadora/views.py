@@ -15,6 +15,25 @@ class Suma(APIView):
         # Devuelve la respuesta con el resultado de la suma
         return Response({'resultado': resultado})
     
+
+class Resta(APIView):
+    def post(self, request):
+        # Obtenemos la lista de números que llega en el JSON
+        listaNumeros = request.data.get('listaNumeros')
+        
+        # Validamos que haya llegado una lista de numeros
+        if not listaNumeros or not isinstance(listaNumeros, list):
+            return Response({'error': 'Debes proporcionar una lista de números.'}, status=400)
+
+        # Calculamos la resta de los numeros en la lista
+        resultado = listaNumeros[0]  # Comenzamos con el primer numero
+        for numero in listaNumeros[1:]:
+            resultado -= numero  # Restamos cada numero siguiente
+        
+        # Devolvemos la respuesta con el resultado de la resta
+        return Response({'resultado': resultado})
+
+    
 class Multiplicacion(APIView):
     def post(self, request):
         # Obtenemos la lista de números que llegó en el JSON
