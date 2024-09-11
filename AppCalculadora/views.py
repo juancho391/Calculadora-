@@ -48,3 +48,22 @@ class Multiplicacion(APIView):
         return Response({'resultado': producto})
     
 
+class Division(APIView):
+    def post(self, request):
+        # Obtenemos la lista de números que llegó en el JSON
+        listaNumeros = request.data.get('listaNumeros')
+
+        # Inicializamos el resultado con el primer número de la lista
+        resultado = listaNumeros[0]
+
+        # Iteramos desde el segundo número en adelante y dividimos el resultado
+        for numero in listaNumeros[1:]:
+            if numero != 0:
+                resultado /= numero
+            else:
+                return Response({'error': 'Indefinido'}, status=400) #Error 400 la solicitud del usuario tiene algun error
+
+        return Response({'resultado': resultado})
+
+
+
