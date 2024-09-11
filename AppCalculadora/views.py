@@ -65,5 +65,32 @@ class Division(APIView):
 
         return Response({'resultado': resultado})
 
+class Raiz(APIView):
+    def post(self, request):
+        # Obtenemos el número y el índice de la raíz que se quiere calcular
+        numero = request.data.get('numero')
+        raiz = request.data.get('raiz')
+
+        # Validamos que no se intente calcular la raíz 0
+        if raiz == 0:
+            return Response({'error': 'El índice de la raíz no puede ser 0'}, status=400)
+        
+        # Calculamos la raíz usando el operador **
+        resultado = numero ** (1 / raiz)
+        
+        # Devolvemos el resultado de la raíz
+        return Response({'resultado_raiz': resultado})
+
+class Potencia(APIView):
+    def post(self, request):
+        # Obtenemos el número base y la potencia
+        base = request.data.get('base')
+        exponente = request.data.get('exponente')
+        
+        # Calculamos la base elevada a la potencia usando el operador **
+        resultado = base ** exponente
+        
+        # Devolvemos el resultado de la operación
+        return Response({'resultado_potencia': resultado})
 
 
