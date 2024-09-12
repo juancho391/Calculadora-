@@ -15,12 +15,12 @@ class ControladorCalculadora(APIView):
                 for i in listaNumeros:
                     #sumo los numeros suponiendo que el operador esta en la posicion 1
                     suma = listaNumeros[0] + listaNumeros[2]
-                    return suma
+                    return Response({"resultado": suma})
             #verifico que el operador sea -
             elif "-" in listaNumeros:
                 for i in listaNumeros:
                     #resto los numeros suponiendo que el operador esta en la posicion 1
                     resta = listaNumeros[0] - listaNumeros[2]
-                    return resta
+                    return Response({"resultado": resta})
             
 
