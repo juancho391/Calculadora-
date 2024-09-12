@@ -49,11 +49,7 @@ class ControladorCalculadora(APIView):
                         Raiz = listaNumeros[0]**(1/listaNumeros[2])
                     else:
                         return Response ({"Error":"Numero imaginario"})
-                return Response({"Resultado":Raiz})               
-                #comentario 
-                
-                print("hi")
-                
+                return Response({"Resultado":Raiz})                               
                     
 
 
