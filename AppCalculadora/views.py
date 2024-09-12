@@ -38,6 +38,23 @@ class ControladorCalculadora(APIView):
                     else:
                          return Response ({"error": "Indefinido"})
                 return Response ({"resultado": division})
+            elif "^" in listaNumeros:
+                for i in listaNumeros:
+                 if listaNumeros[1] == "^":
+                    Potencia = listaNumeros[0] ** listaNumeros[2]
+                 return Response ({"resultado":Potencia})   
+            elif "√" in listaNumeros:
+                for i in listaNumeros:
+                    if listaNumeros[1] > 0:
+                        Raiz = listaNumeros[0]**(1/listaNumeros[2])
+                    else:
+                        return Response ({"Error":"Numero imaginario"})
+                return Response({"Resultado":Raiz})               
+                #comentario 
+                
+                print("hi")
+                
+                    
 
 
 
