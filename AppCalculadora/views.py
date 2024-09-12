@@ -13,6 +13,7 @@ def home(request):
 
 class ControladorCalculadora(APIView):
     def post(self, request):
+        print(request.data)
         listaNumeros = request.data.get('ListaExpresion', [])
 
         # Verifica que listaNumeros sea una lista y contenga exactamente 3 elementos
