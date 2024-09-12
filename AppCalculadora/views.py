@@ -22,5 +22,24 @@ class ControladorCalculadora(APIView):
                     #resto los numeros suponiendo que el operador esta en la posicion 1
                     resta = listaNumeros[0] - listaNumeros[2]
                     return Response({"resultado": resta})
+            #verifico que el operador sea x
+            elif "x" in listaNumeros:
+                for i in listaNumeros:
+                    #multiplico los numeros
+                    multiplicacion=listaNumeros[0] * listaNumeros[2]
+                    return Response({"resultado": multiplicacion})
+            #verifico que el operador sea /
+            elif "/" in listaNumeros:
+                for i in listaNumeros:
+                #Si el segundo numero es diferente a cero dividimos
+                    if listaNumeros[2]!=0:
+                        division=listaNumeros[0]/listaNumeros[2]
+                #Si el segundo numero es 0 es indefinido
+                    else:
+                         return Response ({"error": "Indefinido"})
+                return Response ({"resultado": division})
+
+
+
             
 
